@@ -46,7 +46,7 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSaniti
                 },
                 resolve: {
                   feedbacks: function (Feedbacks){
-                    return Feedbacks.getAllFeedbacks().$loaded();
+                    return Feedbacks.getWeekFeedbacks().$loaded();
                   }
                 }
 
