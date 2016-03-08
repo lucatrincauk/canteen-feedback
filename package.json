@@ -1,8 +1,8 @@
 {
   "name": "CanteenFeedback",
-  "version": "1.2.1",
-  "description": "A blank seed project for rapid development of Ionic projects through gulp workflows",
-  "author": "Thomas Maximini <tmaximini@gmail.com>",
+  "version": "1.0",
+  "description": "An app for giving feedback on the canteen service",
+  "author": "Luca Trinca <luca.trinca@marks-and-spencer.com>",
   "dependencies": {
     "angularfire": "^1.1.4",
     "bluebird": "^3.0.5",

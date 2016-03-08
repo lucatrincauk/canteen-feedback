@@ -45,8 +45,17 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSaniti
                     }
                 },
                 resolve: {
-                  feedbacks: function (Feedbacks){
+                  weekFeedbacks: function (Feedbacks){
                     return Feedbacks.getWeekFeedbacks().$loaded();
+                  },
+                  todaysFeedbacks: function (Feedbacks){
+                    return Feedbacks.getTodaysFeedbacks().$loaded();
+                  },
+                  weekRatings: function (Ratings){
+                    return Ratings.getWeekRatings().$loaded();
+                  },
+                  todaysRating: function (Ratings){
+                    return Ratings.getTodaysRating().$loaded();
                   }
                 }
 
