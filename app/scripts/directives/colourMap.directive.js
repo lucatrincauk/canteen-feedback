@@ -21,15 +21,6 @@ angular.module('CanteenFeedback')
 
     function link(scope) {
 
-      scope.$watch('value', function(newValue, oldValue) {
-          if (newValue) {
-            scope.value = newValue;
-
-          }
-          console.log(newValue, scope.value)
-      });
-
-
       scope.mapColours = function() {
         scope.green = Math.round(Math.min((255.0 * 2.0) * (scope.value / (10 - 1)), 255));
         scope.red = Math.round(Math.min((255.0 * 2.0) * ((10 - 1 - scope.value) / (10 - 1))));
