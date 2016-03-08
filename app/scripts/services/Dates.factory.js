@@ -8,16 +8,16 @@ angular.module('CanteenFeedback')
   .factory('Dates', function() {
     var date;
 
-    function currentMonth(date) {
-      date = date.slice(0, 7);
-
-      var month = {
-          'start': date + '-01',
-          'end': date + '-31'
-      };
-
-      return month;
-    }
+    // function currentMonth(date) {
+    //   date = date.slice(0, 7);
+    //
+    //   var month = {
+    //       'start': date + '-01',
+    //       'end': date + '-31'
+    //   };
+    //
+    //   return month;
+    // }
 
     function getTodaysDate() {
       return new Date().toJSON();

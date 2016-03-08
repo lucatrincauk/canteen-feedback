@@ -1,0 +1,9 @@
+{
+  "firebase": "canteen-feedback",
+  "public": "www",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

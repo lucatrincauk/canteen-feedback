@@ -19,11 +19,9 @@ angular.module('CanteenFeedback')
         'today': todaysRating[0],
         'week': weekRatings
       };
-      console.log($scope.ratings)
-
 
       $scope.$watch('ratings.today.total', function(newValue, oldValue) {
-          if (newValue) {
+          if (newValue !== oldValue) {
             $scope.dailyPercentage = getDailyPercentage();
             $scope.weeklyPercentage = getWeeklyPercentage();
           }
@@ -44,7 +42,7 @@ angular.module('CanteenFeedback')
 
       function getWeeklyPercentage() {
         var weeklyPercentage = [];
-        angular.forEach($scope.ratings.week, function(value, key) {
+        angular.forEach($scope.ratings.week, function(value) {
           this.push({'day': value.$id, 'rating': value.positive / value.total * 10});
         }, weeklyPercentage);
         return _.merge($scope.weekDays, weeklyPercentage);

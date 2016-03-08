@@ -32,8 +32,7 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSaniti
             .state('app', {
                 url: '/app',
                 abstract: true,
-                templateUrl: 'templates/main.html',
-                controller: 'MainController'
+                templateUrl: 'templates/main.html'
             })
             .state('app.home', {
                 url: '/home',
