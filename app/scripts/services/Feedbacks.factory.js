@@ -16,7 +16,7 @@ angular.module('CanteenFeedback')
       var week = Dates.getCurrentWeekDays(true);
 
       console.log(Dates.formatDate(Dates.getTodaysDate()))
-      return $firebaseArray(ref.child('feedbacks').orderByKey().startAt(Dates.formatDate(week[0])).endAt(Dates.formatDate(week[4])));
+      return $firebaseArray(ref.child('feedbacks').orderByKey().startAt(Dates.formatDate(week[0].day)).endAt(Dates.formatDate(week[4].day)));
     };
 
 

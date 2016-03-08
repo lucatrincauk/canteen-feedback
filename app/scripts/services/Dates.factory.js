@@ -32,9 +32,9 @@ angular.module('CanteenFeedback')
       for (var i = 0; i < 5; i++) {
         date = new Date();
         if (shortenDate) {
-          range.push(formatDate(new Date(date.setDate(diffStart + i)).toJSON()))
+          range.push({'day':formatDate(new Date(date.setDate(diffStart + i)).toJSON())});
         } else {
-          range.push(new Date(date.setDate(diffStart + i)).toJSON())
+          range.push(new Date(date.setDate(diffStart + i)).toJSON());
         }
       }
 
@@ -50,7 +50,7 @@ angular.module('CanteenFeedback')
       getCurrentWeekDays: getCurrentWeekDays,
       getTodaysDate: getTodaysDate,
       formatDate: formatDate
-    }
+    };
 
     return dates;
 

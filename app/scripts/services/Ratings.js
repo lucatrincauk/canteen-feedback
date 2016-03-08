@@ -16,7 +16,7 @@ angular.module('CanteenFeedback')
     var getWeekRatings = function() {
       var week = Dates.getCurrentWeekDays(true);
 
-      return $firebaseArray(ref.child('ratings').orderByKey().startAt(Dates.formatDate(week[0])).endAt(Dates.formatDate(week[4])));
+      return $firebaseArray(ref.child('ratings').orderByKey().startAt(Dates.formatDate(week[0].day)).endAt(Dates.formatDate(week[4].day)));
     };
 
     var addRating = function(add) {
@@ -27,9 +27,9 @@ angular.module('CanteenFeedback')
             total: 0
           };
         }
-        return {'positive': current.positive + (add ? 1 : 0), 'total': current.total + 1 }
+        return {'positive': current.positive + (add ? 1 : 0), 'total': current.total + 1 };
       });
-    }
+    };
 
     var ratings = {
       getTodaysRating: getTodaysRating,

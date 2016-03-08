@@ -9,33 +9,31 @@
 angular.module('CanteenFeedback')
     .controller('HomeController', function($scope, weekFeedbacks, todaysFeedbacks, _, Dates, weekRatings, todaysRating) {
 
+
       $scope.feedbacks = weekFeedbacks;
       $scope.todaysFeedbacks = todaysFeedbacks;
+      $scope.weekDays = Dates.getCurrentWeekDays(true);
+      $scope.weekDaysUnformatted = Dates.getCurrentWeekDays();
       $scope.ratings = {
         'today': todaysRating[0],
         'week': weekRatings
       };
-      $scope.dailyPercentage = function() {
+
+      var dailyPercentage = getDailyPercentage();
+      var weeklyPercentage = getWeeklyPercentage();
+      $scope.dailyPercentage = dailyPercentage;
+      $scope.weeklyPercentage = weeklyPercentage;
+
+      function getDailyPercentage() {
         return $scope.ratings.today.positive / $scope.ratings.today.total * 10;
       }
 
-      $scope.weeklyPercentage = function() {
+      function getWeeklyPercentage() {
         var weeklyPercentage = [];
-        angular.forEach($scope.feedbacks, function(value, key) {
-          var feedbackSplit = _.countBy(value, function(feedback) {
-            if (feedback && feedback.choice) {
-              return feedback.choice === 'happy';
-            }
-          });
-          if (!this[value.$id]) {
-            this[value.$id] = feedbackSplit.true / (feedbackSplit.true + feedbackSplit.false) * 10;
-
-          }
-          // this.push({'day': value.$id, 'rating': feedbackSplit.true / (feedbackSplit.true + feedbackSplit.false) * 10});
+        angular.forEach($scope.ratings.week, function(value, key) {
+          this.push({'day': value.$id, 'rating': value.positive / value.total * 10});
         }, weeklyPercentage);
-        return weeklyPercentage;
+        return _.merge($scope.weekDays, weeklyPercentage);
       }
 
-      $scope.weeklyPercentage();
-      $scope.weekDays = Dates.getCurrentWeekDays(true);
     });

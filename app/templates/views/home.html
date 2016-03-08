@@ -19,27 +19,24 @@
               Today's Rating
             </div>
             <div class="item item-text-wrap">
-              {{dailyPercentage() | number : 1}}/10 ({{ratings.today.total}} ratings)
+              {{dailyPercentage | number : 1}}/10 ({{ratings.today.total}} ratings)
             </div>
 
           </div>
           <button class="button button-block button-positive" ui-sref="app.feedback">
             Add your feedback
           </button>
-
-          <div class="row">
-            <div class="col">Mon</div>
-            <div class="col">Tue</div>
-            <div class="col">Wed</div>
-            <div class="col">Thur</div>
-            <div class="col">Fri</div>
-          </div>
-          {{weeklyPercentage()}}
-          <div class="row">
-            <div ng-repeat="day in weekDays" class="col">
-              <div ng-repeat="rating in ratings">{{rating.$id}}</div>
-
+          <div class="card">
+            <div class="row item item-divider">
+              <div ng-repeat="date in weekDaysUnformatted" class="col">
+                {{date | date: 'EEEE d'}}
               </div>
+            </div>
+            <div class="row item">
+              <div ng-repeat="date in weeklyPercentage" class="col">
+                {{(date.rating | number:1) || 'N/A'}}
+              </div>
+            </div>
           </div>
         </div>
     </ion-content>
