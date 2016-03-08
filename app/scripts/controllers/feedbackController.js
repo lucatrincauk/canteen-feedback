@@ -7,7 +7,7 @@
  * # FeedbackController
  */
 angular.module('CanteenFeedback')
-    .controller('FeedbackController', function($scope, feedbacks, Ratings) {
+    .controller('FeedbackController', function($scope, feedbacks, Ratings, $state) {
 
       $scope.feedbacks = feedbacks;
       $scope.ratings = Ratings.getTodaysRating();
@@ -23,6 +23,7 @@ angular.module('CanteenFeedback')
             choice: ''
           };
         });
+        $state.go('app.home');
 
       };
 

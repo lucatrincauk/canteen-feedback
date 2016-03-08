@@ -5,3 +5,35 @@
 .content {
   padding: 1rem;
 }
+
+
+  .large-icon {
+    font-size: 40px;
+  }
+
+
+.todays-rating {
+  .item-body {
+
+    text-align: center;
+  }
+}
+.home-week-stats {
+
+
+  .coloured-row {
+    text-align: center;
+
+    &.item,
+    .item,
+    .col {
+      padding: 0;
+    }
+
+  }
+
+  .coloured-col {
+    padding: 5px
+  }
+
+}

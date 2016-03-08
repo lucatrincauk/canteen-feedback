@@ -12,32 +12,54 @@
         <div class="loader" ng-if="!feedbacks">
             <ion-spinner></ion-spinner>
         </div>
-        <div class="content">
 
-          <div class="card">
-            <div class="item item-divider">
-              Today's Rating
-            </div>
-            <div class="item item-text-wrap">
-              {{dailyPercentage | number : 1}}/10 ({{ratings.today.total}} ratings)
+          <div class="card todays-rating">
+            <div class="item item-avatar">
+              <span class="icon ion-calendar item-image large-icon"></span>
+              <h2>Today's Rating</h2>
+              <p>{{todaysDate | date: 'fullDate'}}</p>
             </div>
 
+            <div class="item item-body">
+                <h1 colour-map="dailyPercentage" colour-map-scale="true"></h1>
+                <h3>({{ratings.today.total}} ratings)</h3>
+
+              <div class="subdued">
+                <button class="button button-block button-positive" ui-sref="app.feedback">
+                Add your feedback
+                </button>
+              </div>
+            </div>
           </div>
-          <button class="button button-block button-positive" ui-sref="app.feedback">
-            Add your feedback
-          </button>
-          <div class="card">
+
+          <div class="list card home-week-stats">
+            <div class="item item-avatar">
+              <span class="icon ion-stats-bars item-image large-icon"></span>
+              <h2>Week {{weekDaysUnformatted[0] | date : 'w'}}</h2>
+              <p>Starting {{weekDaysUnformatted[0] | date : 'fullDate'}}</p>
+            </div>
             <div class="row item item-divider">
-              <div ng-repeat="date in weekDaysUnformatted" class="col">
-                {{date | date: 'EEEE d'}}
+              <div class="col">
+                Mon
+              </div>
+              <div class="col">
+                Tue
+              </div>
+              <div class="col">
+                Wed
+              </div>
+              <div class="col">
+                Thur
+              </div>
+              <div class="col">
+                Fri
               </div>
             </div>
-            <div class="row item">
+            <div class="row item coloured-row">
               <div ng-repeat="date in weeklyPercentage" class="col">
-                {{(date.rating | number:1) || 'N/A'}}
+                 <div colour-map="date.rating"></div>
               </div>
             </div>
-          </div>
         </div>
     </ion-content>
 

@@ -14,10 +14,20 @@ angular.module('CanteenFeedback')
       $scope.todaysFeedbacks = todaysFeedbacks;
       $scope.weekDays = Dates.getCurrentWeekDays(true);
       $scope.weekDaysUnformatted = Dates.getCurrentWeekDays();
+      $scope.todaysDate = Dates.getTodaysDate();
       $scope.ratings = {
         'today': todaysRating[0],
         'week': weekRatings
       };
+      console.log($scope.ratings)
+
+
+      $scope.$watch('ratings.today.total', function(newValue, oldValue) {
+          if (newValue) {
+            $scope.dailyPercentage = getDailyPercentage();
+            $scope.weeklyPercentage = getWeeklyPercentage();
+          }
+      });
 
       var dailyPercentage = getDailyPercentage();
       var weeklyPercentage = getWeeklyPercentage();
@@ -25,7 +35,11 @@ angular.module('CanteenFeedback')
       $scope.weeklyPercentage = weeklyPercentage;
 
       function getDailyPercentage() {
-        return $scope.ratings.today.positive / $scope.ratings.today.total * 10;
+        if ($scope.ratings.today) {
+          return $scope.ratings.today.positive / $scope.ratings.today.total * 10;
+        } else {
+          return '-';
+        }
       }
 
       function getWeeklyPercentage() {
