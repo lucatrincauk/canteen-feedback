@@ -19,12 +19,11 @@
               <h2>Today's Rating</h2>
               <p>{{todaysDate | date: 'fullDate'}}</p>
             </div>
-
             <div class="item item-body">
                 <h1 colour-map="dailyPercentage" colour-map-scale="true"></h1>
                 <h3>({{ratings.today.total}} ratings)</h3>
 
-              <div class="subdued">
+              <div class="subdued" ng-if="!hasVoted">
                 <button class="button button-block button-positive" ui-sref="app.feedback">
                 Add your feedback
                 </button>

@@ -8,14 +8,24 @@
 
             <form ng-submit="addFeedback()">
               <div class="card">
+                <div class="item item-divider">
+                  The food made me:
+                </div>
                 <ion-radio ng-model="newFeedback.choice" ng-value="'happy'">Happy</ion-radio>
                 <ion-radio ng-model="newFeedback.choice" ng-value="'unhappy'">Unhappy</ion-radio>
-
-
+               </div>
+              <div class="card">
+                <div class="item item-divider">
+                  My option was:
+                </div>
+                <ion-radio ng-model="newFeedback.option" ng-value="'bistro'">Bistro</ion-radio>
+                <ion-radio ng-model="newFeedback.option" ng-value="'vegetarian'">Vegetarian</ion-radio>
+                <ion-radio ng-model="newFeedback.option" ng-value="'soup'">Soup</ion-radio>
+                <ion-radio ng-model="newFeedback.option" ng-value="'jacketpotato'">Jacket Potato</ion-radio>
                </div>
                <div class="padding">
                   <button type="submit" class="button button-block button-positive activated">Submit feedback</button>
-</div>
+                </div>
             </form>
 
     </ion-content>

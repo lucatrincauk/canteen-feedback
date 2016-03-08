@@ -20,7 +20,7 @@
                     <i class="icon ion-home"></i>
                     Hub
                 </a>
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.feedback">
+                <a ng-if="hasVoted" menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.feedback">
                     <i class="icon ion-settings"></i>
                     Add feedback
                 </a>
