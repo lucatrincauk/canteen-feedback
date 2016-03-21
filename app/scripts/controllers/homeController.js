@@ -19,7 +19,7 @@ angular.module('CanteenFeedback')
         'week': weekRatings
       };
 
-      $scope.$watch('ratings.today.total', function(newValue, oldValue) {
+      $scope.$watch('ratings.today.quantity', function(newValue, oldValue) {
           if (newValue !== oldValue) {
             $scope.dailyPercentage = getDailyPercentage();
             $scope.weeklyPercentage = getWeeklyPercentage();
@@ -32,6 +32,7 @@ angular.module('CanteenFeedback')
       $scope.weeklyPercentage = weeklyPercentage;
 
       function getDailyPercentage() {
+        console.log($scope.ratings)
         if ($scope.ratings.today) {
           return $scope.ratings.today.total / $scope.ratings.today.quantity;
         } else {
