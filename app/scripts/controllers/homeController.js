@@ -33,7 +33,7 @@ angular.module('CanteenFeedback')
 
       function getDailyPercentage() {
         if ($scope.ratings.today) {
-          return $scope.ratings.today.positive / $scope.ratings.today.total * 10;
+          return $scope.ratings.today.total / $scope.ratings.today.quantity;
         } else {
           return '-';
         }
@@ -42,7 +42,7 @@ angular.module('CanteenFeedback')
       function getWeeklyPercentage() {
         var weeklyPercentage = [];
         angular.forEach($scope.ratings.week, function(value) {
-          this.push({'day': value.$id, 'rating': value.positive / value.total * 10});
+          this.push({'day': value.$id, 'rating': value.total / value.quantity});
         }, weeklyPercentage);
         return _.merge($scope.weekDays, weeklyPercentage);
       }

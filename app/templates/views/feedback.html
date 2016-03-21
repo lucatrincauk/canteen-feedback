@@ -9,20 +9,63 @@
             <form ng-submit="addFeedback()">
               <div class="card">
                 <div class="item item-divider">
-                  The food made me:
+                  Your feedback
                 </div>
-                <ion-radio ng-model="newFeedback.choice" ng-value="'happy'">Happy</ion-radio>
-                <ion-radio ng-model="newFeedback.choice" ng-value="'unhappy'">Unhappy</ion-radio>
-               </div>
-              <div class="card">
-                <div class="item item-divider">
-                  My option was:
+                <label class="item item-input item-select" for="range">
+                  <div class="input-label">
+                  Range
+                  </div>
+                  <select name="range" required ng-model="newFeedback.option">
+                    <option value="" disabled>Please select</option>
+                    <option value="bistro">Bistro</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="soup">Soup</option>
+                    <option value="jp">Jacket Potato</option>
+                  </select>
+                </label>
+                <div class="item range">
+                  <div class="input-label">
+                       Taste
+                  </div>
+                  <i class="icon ion-sad-outline"></i>
+                  <input required type="range" name="rating" ng-model="newFeedback.rating" ng-change="calculateTotal()" min="0" max="10" step="1">
+                  <i class="icon ion-happy-outline"></i>
                 </div>
-                <ion-radio ng-model="newFeedback.option" ng-value="'bistro'">Bistro</ion-radio>
-                <ion-radio ng-model="newFeedback.option" ng-value="'vegetarian'">Vegetarian</ion-radio>
-                <ion-radio ng-model="newFeedback.option" ng-value="'soup'">Soup</ion-radio>
-                <ion-radio ng-model="newFeedback.option" ng-value="'jacketpotato'">Jacket Potato</ion-radio>
-               </div>
+                 <div class="item range">
+                   <div class="input-label">
+                        Staff
+                   </div>
+                   <i class="icon ion-sad-outline"></i>
+                   <input required type="range" name="staff" ng-model="newFeedback.staff" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <i class="icon ion-happy-outline"></i>
+                 </div>
+                 <div class="item range">
+                   <div class="input-label">
+                        Portion
+                   </div>
+                   <i class="icon ion-sad-outline"></i>
+                   <input required type="range" name="staff" ng-model="newFeedback.portion" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <i class="icon ion-happy-outline"></i>
+                 </div>
+                 <div class="item range">
+                   <div class="input-label">
+                        Value
+                   </div>
+                   <i class="icon ion-sad-outline"></i>
+                   <input required type="range" name="value" ng-model="newFeedback.money" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <i class="icon ion-happy-outline"></i>
+                 </div>
+
+                </div>
+                <div class="card" ng-if="total >= 0">
+                  <div class="item item-divider">
+                    Your total rating
+                  </div>
+                  <div class="item">
+                    <h1>{{total}}/10</h1>
+                  </div>
+
+                 </div>
                <div class="padding">
                   <button type="submit" class="button button-block button-positive activated">Submit feedback</button>
                 </div>

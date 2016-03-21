@@ -11,9 +11,7 @@ angular.module('CanteenFeedback')
 
       $scope.feedbacks = feedbacks;
       $scope.ratings = Ratings.getTodaysRating();
-      $scope.newFeedback = {
-        choice: ''
-      };
+      $scope.newFeedback = {};
 
       var registerVote = function() {
         var date = new Date();
@@ -26,15 +24,16 @@ angular.module('CanteenFeedback')
       };
 
       $scope.addFeedback = function() {
-        Ratings.addRating($scope.newFeedback.choice === 'happy' ? true : false);
-        $scope.feedbacks.$add($scope.newFeedback).then(function(){
-          $scope.newFeedback = {
-            choice: ''
-          };
-        });
+        Ratings.addRating($scope.total);
+        $scope.feedbacks.$add($scope.newFeedback);
         registerVote();
         $state.go('app.home');
+      };
 
+      $scope.calculateTotal = function() {
+        if ($scope.newFeedback.rating && $scope.newFeedback.staff && $scope.newFeedback.portion && $scope.newFeedback.money) {
+          $scope.total = ((parseInt($scope.newFeedback.rating) || 0) + (parseInt($scope.newFeedback.staff) || 0) + (parseInt($scope.newFeedback.portion) || 0) + (parseInt($scope.newFeedback.money) || 0))*10/25;
+        }
       };
 
     });

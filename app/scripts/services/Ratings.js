@@ -19,15 +19,15 @@ angular.module('CanteenFeedback')
       return $firebaseArray(ref.child('ratings').orderByKey().startAt(Dates.formatDate(week[0].day)).endAt(Dates.formatDate(week[4].day)));
     };
 
-    var addRating = function(add) {
+    var addRating = function(rating) {
       ref.child('ratings').child(Dates.formatDate(Dates.getTodaysDate())).transaction(function(current) {
         if (current === null) {
           current = {
-            positive: 0,
-            total: 0
+            total: 0,
+            quantity: 0
           };
         }
-        return {'positive': current.positive + (add ? 1 : 0), 'total': current.total + 1 };
+        return {'total': current.total + rating, 'quantity': current.quantity + 1 };
       });
     };
 
