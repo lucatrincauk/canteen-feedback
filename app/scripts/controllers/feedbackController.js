@@ -36,4 +36,16 @@ angular.module('CanteenFeedback')
         }
       };
 
+      function checkVote() {
+        var date = new Date();
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        var localStorageData = window.localStorage.getItem('lastVote');
+        if (localStorageData && localStorageData == date) {
+          $state.go('app.home');
+        }
+      }
+
+      checkVote();
     });

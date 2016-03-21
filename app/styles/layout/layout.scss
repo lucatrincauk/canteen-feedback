@@ -3,3 +3,17 @@
   width: 100%;
   padding: 20px 0;
 }
+
+.scroll-content {
+  background: $sand;
+
+  @media screen and (max-width: 414px) {
+    background: $sand url('../images/bg.gif') no-repeat center bottom;
+    background-size: cover;
+
+
+    .side-menu & {
+      background-image: none;
+    }
+  }
+}

@@ -14,9 +14,9 @@
         </div>
 
           <div class="card todays-rating">
-            <div class="item item-avatar">
+            <div class="item item-avatar positive">
               <span class="icon ion-calendar item-image large-icon"></span>
-              <h2>Today's Rating</h2>
+              <h2 class="positive">Today's Rating</h2>
               <p>{{todaysDate | date: 'fullDate'}}</p>
             </div>
             <div class="item item-body">
@@ -32,9 +32,9 @@
           </div>
 
           <div class="list card home-week-stats">
-            <div class="item item-avatar">
+            <div class="item item-avatar positive">
               <span class="icon ion-stats-bars item-image large-icon"></span>
-              <h2>Week {{weekDaysUnformatted[0] | date : 'w'}}</h2>
+              <h2 class="positive">Week {{weekDaysUnformatted[0] | date : 'w'}}</h2>
               <p>Starting {{weekDaysUnformatted[0] | date : 'fullDate'}}</p>
             </div>
             <div class="row item item-divider">
