@@ -10,7 +10,7 @@
  */
 
 
-angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase'])
+angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase', 'chart.js'])
 
     .run(function($ionicPlatform) {
 
@@ -71,6 +71,23 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSaniti
                 resolve: {
                   feedbacks: function (Feedbacks){
                     return Feedbacks.getTodaysFeedbacks().$loaded();
+                  }
+                }
+
+            })
+            .state('app.dayFeedbacks', {
+                url: '/feedbacks/:id',
+                cache: true,
+                views: {
+                    'viewContent': {
+                        templateUrl: 'templates/views/dayRating.html',
+                        controller: 'SingleFeedbackController'
+                    }
+                },
+                resolve: {
+                  feedbacks: function (Feedbacks, $stateParams){
+                    console.log($stateParams.id)
+                    return Feedbacks.getDaysFeedbacks($stateParams.id).$loaded();
                   }
                 }
 

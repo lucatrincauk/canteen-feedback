@@ -5,10 +5,10 @@
     </ion-header-bar>
 
     <ion-content>
-        <ion-refresher
+        <!-- <ion-refresher
             pulling-text="Pull to refresh..."
             on-refresh="fetchRandomText()">
-        </ion-refresher>
+        </ion-refresher> -->
         <div class="loader" ng-if="!feedbacks">
             <ion-spinner></ion-spinner>
         </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="row item coloured-row">
               <div ng-repeat="date in weeklyPercentage" class="col">
-                 <div colour-map="date.rating"></div>
+                 <div colour-map="date.rating" ui-sref="app.dayFeedbacks({id:date.day})"></div>
               </div>
             </div>
         </div>

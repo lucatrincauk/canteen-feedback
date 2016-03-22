@@ -1,0 +1,39 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar-positive">
+    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+        <h1 class="title">Day View</h1>
+    </ion-header-bar>
+
+    <ion-content>
+      <div class="content-centered">
+        <div class="card">
+          <div class="item item-avatar positive">
+            <span class="icon ion-calendar item-image large-icon"></span>
+            <h2 class="positive">Overview for {{date | date: 'EEEE'}}</h2>
+            <p>{{date | date: 'longDate'}}</p>
+          </div>
+          <div class="row item item-divider">
+            Overall Ratings
+          </div>
+          <div class="item item-body">
+            <canvas id="bar" class="chart chart-bar"
+              chart-data="valueTotal" chart-options="{
+        scaleSteps: 5,
+        scaleOverride: true,
+      scaleStepWidth: 1}" chart-labels="labels">
+            </canvas>
+          </div>
+          <div class="row item item-divider">
+            Popularity
+          </div>
+          <div class="item item-body">
+            <canvas id="pie" class="chart chart-pie" chart-data="pieValues" chart-legend="true" chart-labels="pieKeys"></canvas>
+          </div>
+        </div>
+    </div>
+
+
+
+    </ion-content>
+
+</ion-view>

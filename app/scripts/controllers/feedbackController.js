@@ -31,12 +31,22 @@ angular.module('CanteenFeedback')
       };
 
       $scope.calculateTotal = function() {
-        if ($scope.newFeedback.rating && $scope.newFeedback.staff && $scope.newFeedback.portion && $scope.newFeedback.money) {
-          $scope.total = ((parseInt($scope.newFeedback.rating) || 0) + (parseInt($scope.newFeedback.staff) || 0) + (parseInt($scope.newFeedback.portion) || 0) + (parseInt($scope.newFeedback.money) || 0))*10/25;
+
+
+          if ($scope.newFeedback.rating >= 0 && $scope.newFeedback.staff >= 0 && $scope.newFeedback.portion >= 0 && $scope.newFeedback.money >= 0) {
+            $scope.newFeedback = {
+              'rating': parseInt($scope.newFeedback.rating),
+              'staff': parseInt($scope.newFeedback.staff),
+              'portion': parseInt($scope.newFeedback.portion),
+              'money': parseInt($scope.newFeedback.money)
+            }
+
+          $scope.total = ($scope.newFeedback.rating*2 + $scope.newFeedback.staff + $scope.newFeedback.portion + $scope.newFeedback.money)*10/25;
         }
       };
 
       function checkVote() {
+        return;
         var date = new Date();
         date.setHours(0);
         date.setMinutes(0);
