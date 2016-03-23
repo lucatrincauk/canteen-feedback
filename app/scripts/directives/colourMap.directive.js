@@ -30,8 +30,8 @@ angular.module('CanteenFeedback')
 
 
         scope.mapColours = function() {
-          scope.green = Math.round(Math.min((255.0 * 2.0) * (scope.value / (10 - 1)), 255));
-          scope.red = Math.round(Math.min((255.0 * 2.0) * ((10 - 1 - scope.value) / (10 - 1))));
+          scope.green = Math.round(Math.min((255.0 * 2.0) * (scope.value / (11 - 1)), 255));
+          scope.red = Math.round(Math.min((255.0 * 2.0) * ((11 - 1 - scope.value) / (11 - 1))));
         };
 
         scope.mapColours();
