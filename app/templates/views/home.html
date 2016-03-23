@@ -22,12 +22,13 @@
             </div>
             <div class="item item-body item-rating" ui-sref="app.dayFeedbacks({id:(todaysDate | date : 'yyyy-MM-dd')})">
                 <h1 colour-map="dailyPercentage" colour-map-scale="true"></h1>
-              <div class="subdued" ng-if="!hasVoted">
-                <button class="button button-block button-positive" ui-sref="app.feedback">
-                Add your feedback
-                </button>
-              </div>
             </div>
+          </div>
+
+          <div class="padding-horizontal" ng-if="!hasVoted">
+            <button class="button button-block button-positive" ui-sref="app.feedback">
+            <strong>Add your feedback</strong>
+            </button>
           </div>
 
           <div class="list card home-week-stats">
