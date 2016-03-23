@@ -18,7 +18,11 @@ angular.module('CanteenFeedback')
         date.setHours(0);
         date.setMinutes(0);
         date.setSeconds(0);
-        window.localStorage.setItem('lastVote', date);
+        try {
+          window.localStorage.setItem('lastVote', date);
+        } catch (e) {
+          return false;
+        }
         console.log(window.localStorage.lastVote);
         $scope.$emit('userHasVoted');
       };
@@ -35,10 +39,11 @@ angular.module('CanteenFeedback')
 
           if ($scope.newFeedback.rating >= 0 && $scope.newFeedback.staff >= 0 && $scope.newFeedback.portion >= 0 && $scope.newFeedback.money >= 0) {
             $scope.newFeedback = {
-              'rating': parseInt($scope.newFeedback.rating),
-              'staff': parseInt($scope.newFeedback.staff),
-              'portion': parseInt($scope.newFeedback.portion),
-              'money': parseInt($scope.newFeedback.money)
+              'option': $scope.newFeedback.option,
+              'rating': parseFloat($scope.newFeedback.rating),
+              'staff': parseFloat($scope.newFeedback.staff),
+              'portion': parseFloat($scope.newFeedback.portion),
+              'money': parseFloat($scope.newFeedback.money)
             }
 
           $scope.total = ($scope.newFeedback.rating*2 + $scope.newFeedback.staff + $scope.newFeedback.portion + $scope.newFeedback.money)*10/25;

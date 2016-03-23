@@ -5,9 +5,19 @@
     </ion-header-bar>
 
     <ion-content>
-
-            <form ng-submit="addFeedback()">
-              <div class="card">
+            <form ng-submit="feedbackForm.$valid && addFeedback()" novalidate name="feedbackForm" class="content-centered">
+              <div class="card" ng-show="!newFeedback.option">
+                <div class="item item-divider">
+                  Your option
+                </div>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'bistro'">Bistro</ion-radio>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'vegetarian'">Vegetarian</ion-radio>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'soup'">Soup</ion-radio>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'jp'">Jacket Potato</ion-radio>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'salad'">Salad</ion-radio>
+                <ion-radio name="range" required ng-model="newFeedback.option" ng-value="'sandwich'">Gourmet Sandwich</ion-radio>
+              </div>
+              <div class="card" ng-show="newFeedback.option">
                 <div class="item item-divider">
                   Your feedback
                 </div>
@@ -28,7 +38,7 @@
                        Taste
                   </div>
                   <i class="icon ion-sad-outline"></i>
-                  <input required type="range" name="rating" ng-model="newFeedback.rating" ng-change="calculateTotal()" min="0" max="5" step="1">
+                  <input required type="range" name="rating" ng-model="newFeedback.rating" ng-change="calculateTotal()" min="0" max="5" step="0.1">
                   <i class="icon ion-happy-outline"></i>
                 </div>
                  <div class="item range">
@@ -36,7 +46,7 @@
                         Staff
                    </div>
                    <i class="icon ion-sad-outline"></i>
-                   <input required type="range" name="staff" ng-model="newFeedback.staff" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <input required type="range" name="staff" ng-model="newFeedback.staff" ng-change="calculateTotal()" min="0" max="5" step="0.1">
                    <i class="icon ion-happy-outline"></i>
                  </div>
                  <div class="item range">
@@ -44,7 +54,7 @@
                         Portion
                    </div>
                    <i class="icon ion-sad-outline"></i>
-                   <input required type="range" name="staff" ng-model="newFeedback.portion" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <input required type="range" name="staff" ng-model="newFeedback.portion" ng-change="calculateTotal()" min="0" max="5" step="0.1">
                    <i class="icon ion-happy-outline"></i>
                  </div>
                  <div class="item range">
@@ -52,22 +62,22 @@
                         Value
                    </div>
                    <i class="icon ion-sad-outline"></i>
-                   <input required type="range" name="value" ng-model="newFeedback.money" ng-change="calculateTotal()" min="0" max="5" step="1">
+                   <input required type="range" name="value" ng-model="newFeedback.money" ng-change="calculateTotal()" min="0" max="5" step="0.1">
                    <i class="icon ion-happy-outline"></i>
                  </div>
 
                 </div>
-                <div class="card" ng-if="total >= 0">
+                <div class="card feedback-rating" ng-if="total >= 0">
                   <div class="item item-divider">
                     Your total rating
                   </div>
-                  <div class="item">
-                    <h1>{{total}}/10</h1>
+                  <div class="item item-rating">
+                    <h1 colour-map="total" colour-map-scale="true"></h1>
                   </div>
 
                  </div>
                <div class="padding">
-                  <button type="submit" class="button button-block button-positive activated">Submit feedback</button>
+                  <button type="submit" class="button button-block button-positive activated" ng-disabled="feedbackForm.$invalid">Submit feedback</button>
                 </div>
             </form>
 
