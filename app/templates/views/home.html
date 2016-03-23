@@ -16,13 +16,12 @@
           <div class="card todays-rating">
             <div class="item item-avatar positive">
               <span class="icon ion-calendar item-image large-icon"></span>
-              <h2 class="positive">Today's Rating</h2>
-              <p>{{todaysDate | date: 'fullDate'}}</p>
+              <h2 class="positive">Today</h2>
+              <p>{{todaysDate | date: 'EEEE, MMMM d'}}</p>
+              <span class="badge badge-balanced">{{ratings.today.quantity || 0}} ratings</span>
             </div>
-            <div class="item item-body">
+            <div class="item item-body item-rating" ui-sref="app.dayFeedbacks({id:(todaysDate | date : 'yyyy-MM-dd')})">
                 <h1 colour-map="dailyPercentage" colour-map-scale="true"></h1>
-                <h3>({{ratings.today.quantity}} ratings)</h3>
-
               <div class="subdued" ng-if="!hasVoted">
                 <button class="button button-block button-positive" ui-sref="app.feedback">
                 Add your feedback
@@ -34,8 +33,8 @@
           <div class="list card home-week-stats">
             <div class="item item-avatar positive">
               <span class="icon ion-stats-bars item-image large-icon"></span>
-              <h2 class="positive">Week {{weekDaysUnformatted[0] | date : 'w'}}</h2>
-              <p>Starting {{weekDaysUnformatted[0] | date : 'fullDate'}}</p>
+              <h2 class="positive">This Week</h2>
+              <p>{{weekDaysUnformatted[0] | date : 'MMMM d'}} — {{weekDaysUnformatted[4] | date : 'MMMM d'}}</p>
             </div>
             <div class="row item item-divider">
               <div class="col">

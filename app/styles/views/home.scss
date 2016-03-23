@@ -13,9 +13,17 @@
 
 
 .todays-rating {
-  .item-body {
-
+  h1 {
+    margin: 0;
     text-align: center;
+  }
+
+  .item-rating {
+    padding: 0;
+  }
+
+  .coloured-col {
+    padding: .5em;
   }
 }
 .home-week-stats {

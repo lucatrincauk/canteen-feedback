@@ -5,10 +5,10 @@
 }
 
 ion-view.pane {
-  background: $sand;
+  background: $calm;
 
   @media screen and (max-width: 414px) {
-    background: $sand url('../images/bg.gif') no-repeat center bottom;
+    background: $calm url('../images/bg.gif') no-repeat center bottom;
     background-size: cover;
   }
 }
