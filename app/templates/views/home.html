@@ -18,10 +18,11 @@
               <span class="icon ion-calendar item-image large-icon"></span>
               <h2 class="positive">Today</h2>
               <p>{{todaysDate | date: 'EEEE, MMMM d'}}</p>
-              <span class="badge badge-balanced">{{ratings.today.quantity || 0}} ratings</span>
+              <span class="badge badge-balanced">{{ratings.today[0].quantity || 0}} ratings</span>
             </div>
             <div class="item item-body item-rating" ui-sref="app.dayFeedbacks({id:(todaysDate | date : 'yyyy-MM-dd')})">
-                <h1 colour-map="dailyPercentage" colour-map-scale="true"></h1>
+                <h1 ng-if="ratings.today" colour-map="(ratings.today[0].total / ratings.today[0].quantity)" colour-map-scale="true"></h1>
+                <h1 ng-if="!ratings.today">—</h1>
             </div>
           </div>
 
