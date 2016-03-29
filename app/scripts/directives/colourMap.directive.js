@@ -20,22 +20,22 @@ angular.module('CanteenFeedback')
     };
 
     function link(scope) {
-      if (scope.value >= 0) {
-
-        scope.$watch('value', function(newValue, oldValue) {
-          if (newValue !== oldValue) {
-            scope.mapColours();
-          }
-        });
+      scope.$watch('value', function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          scope.mapColours();
+        }
+      });
 
 
-        scope.mapColours = function() {
+      scope.mapColours = function() {
+        if (scope.value >= 0) {
           scope.green = Math.round(Math.min((255.0 * 2.0) * (scope.value / (11 - 1)), 255));
           scope.red = Math.round(Math.min((255.0 * 2.0) * ((11 - 1 - scope.value) / (11 - 1))));
-        };
+        }
+      };
 
-        scope.mapColours();
+      scope.mapColours();
 
-      }
+
     }
   });
