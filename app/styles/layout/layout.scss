@@ -5,11 +5,22 @@
 }
 
 ion-view.pane {
-  background: $calm;
+  background: $calm url('../images/cook-wood.jpg') repeat center center;
 
-  @media screen and (max-width: 414px) {
-    background: $calm url('../images/bg.gif') no-repeat center bottom;
-    background-size: cover;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: url('../images/cook-detail.gif') no-repeat bottom center;
+    height: 400px;
+    z-index: -1;
+
+    @media screen and (max-width: 414px) {
+      // background: $calm url('../images/bg.gif') no-repeat center bottom;
+      background-size: 140%;
+    }
   }
 }
 
