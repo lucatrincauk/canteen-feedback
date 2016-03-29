@@ -19,7 +19,7 @@ angular.module('CanteenFeedback')
         'week': weekRatings
       };
 
-      $scope.$watch('ratings.week', function(newValue, oldValue) {
+      $scope.$watch('ratings.today[0].quantity', function(newValue, oldValue) {
           if (newValue !== oldValue) {
             $scope.weeklyPercentage = getWeeklyPercentage();
           }
@@ -31,17 +31,19 @@ angular.module('CanteenFeedback')
 
       function getWeeklyPercentage() {
         var weeklyPercentage = [];
-
         _.forEach($scope.weekDays, function(date) {
-          _.forEach($scope.ratings.week, function(rating) {
-            if (rating.$id === date.day) {
-              weeklyPercentage.push({'day': rating.$id, 'rating': rating.total / rating.quantity});
-            } else {
-              weeklyPercentage.push({'day': date.day});
-            }
-          });
+          if ($scope.ratings.week.length) {
+            _.forEach($scope.ratings.week, function(rating) {
+              if (rating.$id === date.day) {
+                weeklyPercentage.push({'day': rating.$id, 'rating': rating.total / rating.quantity});
+              } else {
+                weeklyPercentage.push({'day': date.day});
+              }
+            });
+          } else {
+            weeklyPercentage.push({'day': date.day});
+          }
         });
-
         return weeklyPercentage
       }
 
