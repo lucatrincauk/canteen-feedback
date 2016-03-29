@@ -15,37 +15,34 @@ angular.module('CanteenFeedback')
       $scope.weekDaysUnformatted = Dates.getCurrentWeekDays();
       $scope.todaysDate = Dates.getTodaysDate();
       $scope.ratings = {
-        'today': todaysRating[0],
+        'today': todaysRating,
         'week': weekRatings
       };
 
-      $scope.$watch('ratings.today.quantity', function(newValue, oldValue) {
+      $scope.$watch('ratings.week', function(newValue, oldValue) {
           if (newValue !== oldValue) {
-            $scope.dailyPercentage = getDailyPercentage();
             $scope.weeklyPercentage = getWeeklyPercentage();
           }
       });
 
-      var dailyPercentage = getDailyPercentage();
       var weeklyPercentage = getWeeklyPercentage();
-      $scope.dailyPercentage = dailyPercentage;
       $scope.weeklyPercentage = weeklyPercentage;
 
-      function getDailyPercentage() {
-        console.log($scope.ratings)
-        if ($scope.ratings.today) {
-          return $scope.ratings.today.total / $scope.ratings.today.quantity;
-        } else {
-          return '-';
-        }
-      }
 
       function getWeeklyPercentage() {
         var weeklyPercentage = [];
-        angular.forEach($scope.ratings.week, function(value) {
-          this.push({'day': value.$id, 'rating': value.total / value.quantity});
-        }, weeklyPercentage);
-        return _.merge($scope.weekDays, weeklyPercentage);
+
+        _.forEach($scope.weekDays, function(date) {
+          _.forEach($scope.ratings.week, function(rating) {
+            if (rating.$id === date.day) {
+              weeklyPercentage.push({'day': rating.$id, 'rating': rating.total / rating.quantity});
+            } else {
+              weeklyPercentage.push({'day': date.day});
+            }
+          });
+        });
+
+        return weeklyPercentage
       }
 
       function checkVote() {

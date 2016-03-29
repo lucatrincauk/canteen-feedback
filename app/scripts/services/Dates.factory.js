@@ -31,16 +31,15 @@ angular.module('CanteenFeedback')
 
       for (var i = 0; i < 5; i++) {
         date = new Date();
+        date.setDate(diffStart + i);
         if (shortenDate) {
-          range.push({'day':formatDate(new Date(date.setDate(diffStart + i)).toJSON())});
+          range.push({'day':formatDate(date.toJSON())});
         } else {
-          range.push(new Date(date.setDate(diffStart + i)).toJSON());
+          range.push(date.toJSON());
         }
       }
-
       return range;
     }
-
     function formatDate(date) {
       return date.slice(0,10);
     }
