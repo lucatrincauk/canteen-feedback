@@ -33,7 +33,7 @@ angular.module('CanteenFeedback')
         date = new Date();
         date.setDate(diffStart + i);
         if (shortenDate) {
-          range.push({'day':formatDate(date.toJSON())});
+          range.push({'$id':formatDate(date.toJSON())});
         } else {
           range.push(date.toJSON());
         }

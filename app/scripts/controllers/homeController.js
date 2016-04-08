@@ -28,23 +28,16 @@ angular.module('CanteenFeedback')
       var weeklyPercentage = getWeeklyPercentage();
       $scope.weeklyPercentage = weeklyPercentage;
 
-
       function getWeeklyPercentage() {
-        var weeklyPercentage = [];
-        _.forEach($scope.weekDays, function(date) {
-          if ($scope.ratings.week.length) {
-            _.forEach($scope.ratings.week, function(rating) {
-              if (rating.$id === date.day) {
-                weeklyPercentage.push({'day': rating.$id, 'rating': rating.total / rating.quantity});
-              } else {
-                weeklyPercentage.push({'day': date.day});
-              }
-            });
-          } else {
-            weeklyPercentage.push({'day': date.day});
+        for (var day in $scope.weekDays) {
+          for (var rating in $scope.ratings.week) {
+            if($scope.weekDays.hasOwnProperty(day) && $scope.ratings.week.hasOwnProperty(rating) && $scope.ratings.week[rating]!== null && $scope.weekDays[day]!== null && $scope.ratings.week[rating].$id === $scope.weekDays[day].$id) {
+              $scope.weekDays[day] = $scope.ratings.week[rating];
+              $scope.weekDays[day].rating = $scope.weekDays[day].total / $scope.weekDays[day].quantity;
+            }
           }
-        });
-        return weeklyPercentage
+        }
+        return $scope.weekDays;
       }
 
       function checkVote() {

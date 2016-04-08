@@ -13,14 +13,13 @@ angular.module('CanteenFeedback')
     };
 
     var getDaysFeedbacks = function(date) {
-      console.log(date)
       return $firebaseArray(ref.child('feedbacks').child(date));
     };
 
     var getWeekFeedbacks = function() {
       var week = Dates.getCurrentWeekDays(true);
 
-      return $firebaseArray(ref.child('feedbacks').orderByKey().startAt(Dates.formatDate(week[0].day)).endAt(Dates.formatDate(week[4].day)));
+      return $firebaseArray(ref.child('feedbacks').orderByKey().startAt(Dates.formatDate(week[0].$id)).endAt(Dates.formatDate(week[4].$id)));
     };
 
 
