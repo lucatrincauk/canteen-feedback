@@ -1,23 +1,19 @@
 describe('HomeController', function(){
-	var controller, scope, ExampleService;
+	var controller, scope, weeksFeedback;
 
 	beforeEach(module('CanteenFeedback'));
 	beforeEach(module('AppTemplate'));
 
-	beforeEach(inject(function($rootScope, _$controller_, _ExampleService_){
+	beforeEach(inject(function($rootScope, _weeksFeedback_){
 		scope = $rootScope.$new();
 		controller = _$controller_('HomeController', {
-			$scope: scope,
-			ExampleService: _ExampleService_
+			$scope: scope
 		});
-		ExampleService = _ExampleService_;
-
-		sinon.stub(ExampleService, 'doSomethingAsync', ExampleService.doSomethingAsync);
+		weeksFeedback = _weeksFeedback_
 	}));
 
 	it('calls the method doSomethingAsync()', function(){
-		scope.fetchRandomText();
-		expect(ExampleService.doSomethingAsync.called).to.eq(true);
+		expect(weeksFeedback.poo).to.eq(true);
 
 	});
 
