@@ -1,19 +1,29 @@
 describe('HomeController', function(){
-	var controller, scope, weeksFeedback;
 
-	beforeEach(module('CanteenFeedback'));
+	beforeEach(module('CanteenFeedback', function($provide) {
+	  $provide.value("weekFeedbacks", function() {	return sinon.spy();	});
+	  $provide.value("todaysFeedbacks", function() {	return sinon.spy();	});
+	  $provide.value("weekRatings", function() { return sinon.spy(); });
+	  $provide.value("todaysRating", function() {	return sinon.spy();	});
+	}));
 	beforeEach(module('AppTemplate'));
 
-	beforeEach(inject(function($rootScope, _weeksFeedback_){
-		scope = $rootScope.$new();
-		controller = _$controller_('HomeController', {
-			$scope: scope
-		});
-		weeksFeedback = _weeksFeedback_
-	}));
+	var $controller;
 
-	it('calls the method doSomethingAsync()', function(){
-		expect(weeksFeedback.poo).to.eq(true);
+  beforeEach(inject(function(_$controller_, _weekFeedbacks_){
+    $controller = _$controller_;
+		weekFeedbacks = _weekFeedbacks_;
+
+  }));
+
+	beforeEach(function() {
+		$scope = {};
+		$scope.$watch = sinon.spy();
+		$controller = $controller('HomeController', {$scope: $scope});
+	});
+
+	it('test', function(){
+		expect(weekFeedbacks).not.to.be.undefined;
 
 	});
 
