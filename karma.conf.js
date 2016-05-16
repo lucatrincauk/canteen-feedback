@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 
 /**
- * This function returns a list of js/html files 
+ * This function returns a list of js/html files
  * to be loaded to karma runner
  */
 function filesArray(){
@@ -90,7 +90,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

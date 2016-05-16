@@ -51,7 +51,6 @@ angular.module('CanteenFeedback')
       };
 
       function checkVote() {
-        return;
         var date = new Date();
         date.setHours(0);
         date.setMinutes(0);

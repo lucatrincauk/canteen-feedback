@@ -78,10 +78,8 @@ describe('HomeController', function(){
 		"rating":3.98,
 	}];
 
-  beforeEach(inject(function(_$controller_, _weekFeedbacks_){
+  beforeEach(inject(function(_$controller_){
     $controller = _$controller_;
-		weekFeedbacks = _weekFeedbacks_;
-
   }));
 
 	beforeEach(function() {
