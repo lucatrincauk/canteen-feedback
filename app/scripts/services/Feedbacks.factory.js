@@ -12,6 +12,18 @@ angular.module('CanteenFeedback')
       return $firebaseArray(ref.child('feedbacks').child(Dates.formatDate(Dates.getTodaysDate())));
     };
 
+    var getFeedbacksByOption = function(feedbacks) {
+      return _.groupBy(feedbacks, 'option');
+    }
+
+    var getFeedbacksRating = function(feedbacks) {
+      var ratingTotal = 0;
+      _.forEach(feedbacks, function(feedback) {
+        ratingTotal += feedback.money + feedback.portion + feedback.rating*2 + feedback.staff;
+      });
+      return ratingTotal / (2.5 * feedbacks.length);
+    }
+
     var getDaysFeedbacks = function(date) {
       return $firebaseArray(ref.child('feedbacks').child(date));
     };
@@ -26,7 +38,9 @@ angular.module('CanteenFeedback')
     var feedbacks = {
       getDaysFeedbacks: getDaysFeedbacks,
       getTodaysFeedbacks: getTodaysFeedbacks,
-      getWeekFeedbacks: getWeekFeedbacks
+      getWeekFeedbacks: getWeekFeedbacks,
+      getFeedbacksByOption: getFeedbacksByOption,
+      getFeedbacksRating: getFeedbacksRating
     };
 
     return feedbacks;

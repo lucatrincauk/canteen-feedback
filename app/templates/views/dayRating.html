@@ -5,33 +5,74 @@
     </ion-header-bar>
 
     <ion-content>
-      <div class="content-centered">
+      <div class="content-centered day-view">
         <div class="card">
           <div class="item item-avatar positive">
             <span class="icon ion-calendar item-image large-icon"></span>
             <h2 class="positive">Overview for {{date | date: 'EEEE'}}</h2>
             <p>{{date | date: 'longDate'}}</p>
           </div>
-          <div class="row item item-divider">
-            Overall Ratings
+          <div ng-if="feedbacks.length <= 0">
+            <div class="item item-body no-feedbacks">
+              <div>
+                <span class="icon ion-fork"></span>
+                <span class="icon ion-knife"></span>
+              </div>
+              <p>There are no feedbacks for this day.</p>
+            </div>
           </div>
-          <div class="item item-body">
-            <canvas id="bar" class="chart chart-bar"
-              chart-data="valueTotal" chart-options="{
-        scaleSteps: 5,
-        scaleOverride: true,
-      scaleStepWidth: 1}" chart-labels="labels">
-            </canvas>
-          </div>
-          <div class="row item item-divider">
-            Popularity
-          </div>
-          <div class="item item-body">
-            <canvas id="pie" class="chart chart-pie" chart-data="pieValues" chart-legend="true" chart-labels="pieKeys"></canvas>
+          <div ng-if="feedbacks.length > 0">
+            <div class="row day-view--summary">
+              <div class="col col-50 todays-rating">
+                <h1 colour-map="todaysRating[0].total/todaysRating[0].quantity" colour-map-scale="true">10/10</h1>
+              </div>
+              <div class="col col-50 day-view--stats">
+                <div class="row">
+                  <div class="col col-25"><span class="icon ion-ribbon-b"></span></div>
+                  <h5 class="col col-75">{{stats.best.title}} <em>({{stats.best.rating | number : 0}}/10)</em></h5>
+                </div>
+                <div class="row">
+                  <div class="col col-25"><span class="icon ion-flame"></span></div>
+                  <h5 class="col col-75">{{stats.popular}}</h5>
+                </div>
+
+
+              </div>
+
+            </div>
+            <div class="row item item-divider">
+              Overall Ratings
+            </div>
+            <div class="item item-body">
+              <canvas id="bar" class="chart chart-bar"
+                chart-data="valueTotal" chart-options="{
+          scaleSteps: 5,
+          scaleOverride: true,
+        scaleStepWidth: 1}" chart-labels="labels">
+              </canvas>
+            </div>
+            <div ng-if="feedbacks.length > 1">
+              <div class="row item item-divider">
+                Popularity
+              </div>
+              <div class="item item-body">
+                <canvas id="pie" class="chart chart-pie" chart-data="pieValues" chart-legend="true" chart-labels="pieKeys"></canvas>
+              </div>
+            </div>
           </div>
         </div>
     </div>
-
+<!--
+<div class="col col-50">
+  <div class="row" ng-repeat="option in ratings | orderBy: '-rating'">
+    <div class="col col-75">
+      <p><span ng-if="$first" class="icon ion-ribbon-b"></span>{{option.title}}</p>
+    </div>
+    <div class="col col-25">
+      <p>{{option.rating | number : 1}}</p>
+    </div>
+  </div>
+</div>-->
 
 
     </ion-content>

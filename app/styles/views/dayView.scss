@@ -4,3 +4,61 @@
     height: 12px;
     margin-right: 5px;
 }
+
+.day-view {
+  .item-divider {
+    padding: 10px;
+  }
+}
+
+.no-feedbacks {
+    text-align: center;
+
+    .icon {
+        font-size: 4rem;
+    }
+}
+.day-view--summary {
+    padding: 0;
+
+    > .col {
+        padding: 0;
+    }
+
+}
+
+.day-view--stats {
+  text-transform: capitalize;
+  background: #f5f5f5;
+
+  .row {
+    border-left: 1px solid #ddd;
+  }
+
+  h5 {
+    margin: 0;
+    line-height: 1.6rem;
+  }
+
+  em {
+    font-style: italic;
+    color: #999;
+  }
+
+  .col-25 {
+    text-align: center;
+  }
+
+  .icon {
+    font-size: 1.8rem;
+    vertical-align: middle;
+  }
+
+  .ion-ribbon-b {
+    color: #e3b94b;
+  }
+
+  .ion-flame {
+    color: #ff5d5d;
+  }
+}
