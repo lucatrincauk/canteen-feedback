@@ -13,6 +13,10 @@ angular.module('CanteenFeedback')
       return $firebaseArray(ref.child('ratings').orderByKey().equalTo(Dates.formatDate(Dates.getTodaysDate())));
     };
 
+    var getDateRating = function(day) {
+      return $firebaseArray(ref.child('ratings').orderByKey().equalTo(day));
+    };
+
     var getWeekRatings = function() {
       var week = Dates.getCurrentWeekDays(true);
 
@@ -33,6 +37,7 @@ angular.module('CanteenFeedback')
 
     var ratings = {
       getTodaysRating: getTodaysRating,
+      getDateRating: getDateRating,
       getWeekRatings: getWeekRatings,
       addRating: addRating
     };

@@ -51,5 +51,5 @@ angular.module('CanteenFeedback')
           return $scope.count[o];
         })
       }
-      $scope.todaysRating = Ratings.getTodaysRating();
+      $scope.todaysRating = Ratings.getDateRating($scope.date);
 });
