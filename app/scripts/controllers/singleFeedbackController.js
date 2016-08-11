@@ -7,7 +7,7 @@
  * # FeedbackController
  */
 angular.module('CanteenFeedback')
-    .controller('SingleFeedbackController', function($scope, feedbacks, Ratings, $state, Feedbacks) {
+    .controller('SingleFeedbackController', function($scope, feedbacks, Ratings, $state, Feedbacks, Dates) {
 
       $scope.feedbacks = feedbacks;
       $scope.count = _.countBy(feedbacks, 'option');
@@ -52,4 +52,10 @@ angular.module('CanteenFeedback')
         })
       }
       $scope.todaysRating = Ratings.getDateRating($scope.date);
+
+
+      if ($scope.date === Dates.formatDate(Dates.getTodaysDate())) {
+        $scope.isTodaysDate = true;
+      }
+
 });

@@ -33,12 +33,18 @@
                 </div>
                 <div class="row">
                   <div class="col col-25"><span class="icon ion-flame"></span></div>
-                  <h5 class="col col-75">{{stats.popular}}</h5>
+                  <h5 class="col col-75">{{stats.popular}} <em>({{feedbacks.length}})</em></h5>
                 </div>
 
 
               </div>
 
+            </div>
+
+            <div class="row padding-horizontal" ng-if="!hasVoted && isTodaysDate">
+              <button class="button button-block button-positive" ui-sref="app.feedback">
+              <strong>Add your feedback</strong>
+              </button>
             </div>
             <div class="row item item-divider">
               Overall Ratings
