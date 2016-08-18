@@ -10,7 +10,7 @@
  */
 
 
-angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase', 'chart.js'])
+angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngSanitize', 'firebase', 'chart.js'])
 
     .run(function($ionicPlatform) {
 
