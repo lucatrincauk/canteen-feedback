@@ -10,16 +10,15 @@
  */
 
 
-angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase', 'chart.js'])
+angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngSanitize', 'firebase', 'chart.js'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, User) {
 
-        $ionicPlatform.ready(function() {
-            // save to use plugins here
-        });
+        // $ionicPlatform.ready(function() {
+        //     // save to use plugins here
+        // });
 
-
-
+        User.checkUserVote();
     })
     .constant('FirebaseUrl', 'https://canteen-feedback.firebaseio.com/')
 
@@ -80,13 +79,12 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngResource', 'ngSaniti
                 cache: true,
                 views: {
                     'viewContent': {
-                        templateUrl: 'templates/views/dayRating.html',
-                        controller: 'SingleFeedbackController'
+                        templateUrl: 'templates/views/day.html',
+                        controller: 'dayController'
                     }
                 },
                 resolve: {
                   feedbacks: function (Feedbacks, $stateParams){
-                    console.log($stateParams.id)
                     return Feedbacks.getDaysFeedbacks($stateParams.id).$loaded();
                   }
                 }

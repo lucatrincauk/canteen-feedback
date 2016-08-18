@@ -15,7 +15,7 @@ angular.module('CanteenFeedback')
         value: '=colourMap',
         scale: '=colourMapScale'
       },
-      template: '<div class="coloured-col" style="background-color: rgb({{red}}, {{green}}, 100)">{{value >= 0 ? (value | number : 1) : "—"}}<span ng-if="scale">/10</span></div>',
+      template: '<div class="coloured-col" ng-style="{\'background-color\': \'rgb(\' + red + \',\' + green + \', 100)\'}">{{value >= 0 ? (value | number : 1) : "—"}}<span ng-if="scale">/10</span></div>',
       link: link
     };
 

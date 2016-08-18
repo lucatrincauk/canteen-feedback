@@ -16,3 +16,15 @@
 .disabled-range {
   opacity: .4;
 }
+
+.feedback--chosen-option select {
+  font-weight: bold;
+}
+
+@media screen and (min-width:0\0) {
+  .range input {
+    height: 100px;
+  }
+  
+
+}

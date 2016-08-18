@@ -14,7 +14,7 @@ angular.module('CanteenFeedback')
 
     var getFeedbacksByOption = function(feedbacks) {
       return _.groupBy(feedbacks, 'option');
-    }
+    };
 
     var getFeedbacksRating = function(feedbacks) {
       var ratingTotal = 0;
@@ -22,7 +22,7 @@ angular.module('CanteenFeedback')
         ratingTotal += feedback.money + feedback.portion + feedback.rating*2 + feedback.staff;
       });
       return ratingTotal / (2.5 * feedbacks.length);
-    }
+    };
 
     var getDaysFeedbacks = function(date) {
       return $firebaseArray(ref.child('feedbacks').child(date));
