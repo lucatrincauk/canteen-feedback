@@ -11,6 +11,10 @@
             <span class="icon ion-calendar item-image large-icon"></span>
             <h2 class="positive">Overview for {{date | date: 'EEEE'}}</h2>
             <p>{{date | date: 'longDate'}}</p>
+            <span class="badge badge-balanced">
+              <ng-pluralize count="feedbacks.length || 0"
+                            when="{'0': 'No ratings', 'one': '{} rating','other': '{} ratings'}">
+              </ng-pluralize></span>
           </div>
           <div ng-if="feedbacks.length <= 0">
             <div class="item item-body no-feedbacks">
@@ -33,7 +37,7 @@
                 </div>
                 <div class="row">
                   <div class="col col-25"><span class="icon ion-flame"></span></div>
-                  <h5 class="col col-75">{{stats.popular}} <em>({{feedbacks.length}})</em></h5>
+                  <h5 class="col col-75">{{stats.popular}}</h5>
                 </div>
 
 
