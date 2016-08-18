@@ -16,7 +16,7 @@ angular.module('CanteenFeedback')
 
       $scope.valueTotal = [[(_.sumBy($scope.feedbacks, 'rating')/($scope.feedbacks.length)).toFixed(1),(_.sumBy($scope.feedbacks, 'staff')/$scope.feedbacks.length).toFixed(1),(_.sumBy($scope.feedbacks, 'portion')/$scope.feedbacks.length).toFixed(1),(_.sumBy($scope.feedbacks, 'money')/$scope.feedbacks.length).toFixed(1)]];
       console.log($scope.valueTotal)
-      $scope.labels = ['Rating', 'Staff', 'Portion', 'Value'];
+      $scope.labels = ['Taste', 'Staff', 'Portion', 'Value'];
 
       $scope.date = $state.params.id;
 

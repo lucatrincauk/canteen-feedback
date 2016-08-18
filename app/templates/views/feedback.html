@@ -43,28 +43,51 @@
                   <input required type="range" name="rating" ng-model="newFeedback.rating" ng-change="calculateTotal()" min="0" max="5" step="0.1">
                   <i class="icon ion-happy-outline" ng-class="{'positive' : feedbackForm.rating.$dirty}"></i>
                 </div>
-                 <div class="item range">
+                 <div class="item range" ng-class="{'disabled-range' : feedbackForm.rating.$pristine}">
                    <div class="input-label">
                         Staff
                    </div>
                    <i class="icon ion-sad-outline" ng-class="{'positive' : feedbackForm.staff.$dirty}"></i>
-                   <input required type="range" name="staff" ng-model="newFeedback.staff" ng-change="calculateTotal()" min="0" max="5" step="0.1">
+                   <input   required type="range"
+                            name="staff"
+                            ng-model="newFeedback.staff"
+                            ng-change="calculateTotal()"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            ng-disabled="feedbackForm.rating.$pristine">
                    <i class="icon ion-happy-outline" ng-class="{'positive' : feedbackForm.staff.$dirty}"></i>
                  </div>
-                 <div class="item range">
+                 <div class="item range" ng-class="{'disabled-range' : feedbackForm.staff.$pristine}">
                    <div class="input-label">
                         Portion
                    </div>
                    <i class="icon ion-sad-outline" ng-class="{'positive' : feedbackForm.portion.$dirty}"></i>
-                   <input required type="range" name="portion" ng-model="newFeedback.portion" ng-change="calculateTotal()" min="0" max="5" step="0.1">
+                   <input   required
+                            type="range"
+                            name="portion"
+                            ng-model="newFeedback.portion"
+                            ng-change="calculateTotal()"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            ng-disabled="feedbackForm.staff.$pristine">
                    <i class="icon ion-happy-outline" ng-class="{'positive' : feedbackForm.portion.$dirty}"></i>
                  </div>
-                 <div class="item range">
+                 <div class="item range" ng-class="{'disabled-range' : feedbackForm.portion.$pristine}">
                    <div class="input-label">
                         Value
                    </div>
                    <i class="icon ion-sad-outline" ng-class="{'positive' : feedbackForm.value.$dirty}"></i>
-                   <input required type="range" name="value" ng-model="newFeedback.money" ng-change="calculateTotal()" min="0" max="5" step="0.1">
+                   <input   required
+                            type="range"
+                            name="value"
+                            ng-model="newFeedback.money"
+                            ng-change="calculateTotal()"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            ng-disabled="feedbackForm.rating.$pristine">
                    <i class="icon ion-happy-outline" ng-class="{'positive' : feedbackForm.value.$dirty}"></i>
                  </div>
 
