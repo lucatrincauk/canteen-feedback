@@ -79,8 +79,8 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngSanitize', 'firebase
                 cache: true,
                 views: {
                     'viewContent': {
-                        templateUrl: 'templates/views/dayRating.html',
-                        controller: 'SingleFeedbackController'
+                        templateUrl: 'templates/views/day.html',
+                        controller: 'dayController'
                     }
                 },
                 resolve: {

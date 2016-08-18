@@ -7,7 +7,7 @@
  * # FeedbackController
  */
 angular.module('CanteenFeedback')
-    .controller('SingleFeedbackController', function($scope, feedbacks, Ratings, $state, Feedbacks, Dates) {
+    .controller('dayController', function($scope, feedbacks, Ratings, $state, Feedbacks, Dates) {
 
       $scope.feedbacks = feedbacks;
       $scope.count = _.countBy(feedbacks, 'option');
