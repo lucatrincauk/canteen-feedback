@@ -85,7 +85,6 @@ angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngSanitize', 'firebase
                 },
                 resolve: {
                   feedbacks: function (Feedbacks, $stateParams){
-                    console.log($stateParams.id)
                     return Feedbacks.getDaysFeedbacks($stateParams.id).$loaded();
                   }
                 }

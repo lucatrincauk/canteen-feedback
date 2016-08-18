@@ -37,7 +37,7 @@ angular.module('CanteenFeedback')
               'staff': parseFloat($scope.newFeedback.staff),
               'portion': parseFloat($scope.newFeedback.portion),
               'money': parseFloat($scope.newFeedback.money)
-            }
+            };
 
           $scope.total = ($scope.newFeedback.rating*2 + $scope.newFeedback.staff + $scope.newFeedback.portion + $scope.newFeedback.money)*10/25;
         }

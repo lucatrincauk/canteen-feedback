@@ -7,7 +7,7 @@
  * # HomeController
  */
 angular.module('CanteenFeedback')
-    .controller('HomeController', function($scope, weekFeedbacks, todaysFeedbacks, _, Dates, weekRatings, todaysRating, $rootScope) {
+    .controller('HomeController', function($scope, weekFeedbacks, todaysFeedbacks, _, Dates, weekRatings, todaysRating) {
 
       $scope.feedbacks = weekFeedbacks;
       $scope.todaysFeedbacks = todaysFeedbacks;

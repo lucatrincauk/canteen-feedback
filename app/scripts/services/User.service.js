@@ -13,12 +13,11 @@ angular.module('CanteenFeedback')
       date.setMinutes(0);
       date.setSeconds(0);
       var localStorageData = window.localStorage.getItem('lastVote');
-      if (localStorageData && localStorageData == date) {
+      if (localStorageData && localStorageData === date.toString()) {
         setUserVote(true);
+        return true;
       }
-
-      return localStorageData && localStorageData == date;
-    }
+    };
 
     var registerUserVote = function () {
       var date = new Date();
@@ -31,11 +30,11 @@ angular.module('CanteenFeedback')
         return false;
       }
       setUserVote(true);
-    }
+    };
 
     var setUserVote = function(hasVoted) {
       $rootScope.userHasVoted = hasVoted;
-    }
+    };
 
     var user = {
       checkUserVote: checkUserVote,
