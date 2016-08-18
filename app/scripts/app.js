@@ -12,14 +12,13 @@
 
 angular.module('CanteenFeedback', ['ionic', 'ngCordova', 'ngSanitize', 'firebase', 'chart.js'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, User) {
 
-        $ionicPlatform.ready(function() {
-            // save to use plugins here
-        });
+        // $ionicPlatform.ready(function() {
+        //     // save to use plugins here
+        // });
 
-
-
+        User.checkUserVote();
     })
     .constant('FirebaseUrl', 'https://canteen-feedback.firebaseio.com/')
 

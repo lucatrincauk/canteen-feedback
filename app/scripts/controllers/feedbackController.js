@@ -7,24 +7,18 @@
  * # FeedbackController
  */
 angular.module('CanteenFeedback')
-    .controller('FeedbackController', function($scope, feedbacks, Ratings, $state) {
+    .controller('FeedbackController', function($rootScope, $scope, feedbacks, Ratings, $state, User) {
 
       $scope.feedbacks = feedbacks;
       $scope.ratings = Ratings.getTodaysRating();
       $scope.newFeedback = {};
 
+      if (User.checkUserVote()) {
+        $state.go('app.home');
+      }
+
       var registerVote = function() {
-        var date = new Date();
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        try {
-          window.localStorage.setItem('lastVote', date);
-        } catch (e) {
-          return false;
-        }
-        console.log(window.localStorage.lastVote);
-        $scope.$emit('userHasVoted');
+        User.registerUserVote();
       };
 
       $scope.addFeedback = function() {
@@ -35,7 +29,6 @@ angular.module('CanteenFeedback')
       };
 
       $scope.calculateTotal = function() {
-
 
           if ($scope.newFeedback.rating >= 0 && $scope.newFeedback.staff >= 0 && $scope.newFeedback.portion >= 0 && $scope.newFeedback.money >= 0) {
             $scope.newFeedback = {
@@ -50,16 +43,5 @@ angular.module('CanteenFeedback')
         }
       };
 
-      function checkVote() {
-        var date = new Date();
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        var localStorageData = window.localStorage.getItem('lastVote');
-        if (localStorageData && localStorageData == date) {
-          $state.go('app.home');
-        }
-      }
 
-      checkVote();
     });
