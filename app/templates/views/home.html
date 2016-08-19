@@ -24,8 +24,14 @@
                 </ng-pluralize></span>
             </div>
             <div class="item item-body item-rating" ui-sref="app.dayFeedbacks({id:(todaysDate | date : 'yyyy-MM-dd')})">
-                <h1 ng-if="ratings.today" colour-map="(ratings.today[0].total / ratings.today[0].quantity)" colour-map-scale="true"></h1>
-                <h1 ng-if="!ratings.today">—</h1>
+                <h1 ng-if="ratings.today.length > 0" colour-map="(ratings.today[0].total / ratings.today[0].quantity)" colour-map-scale="true"></h1>
+                <div ng-if="ratings.today.length <= 0" class="item item-body no-feedbacks">
+                  <div>
+                    <span class="icon ion-fork"></span>
+                    <span class="icon ion-knife"></span>
+                  </div>
+                  <p>There are no feedbacks for today yet.</p>
+                </div>
             </div>
           </div>
           <div class="padding-horizontal" ng-if="!userHasVoted">

@@ -16,14 +16,12 @@
                             when="{'0': 'No ratings', 'one': '{} rating','other': '{} ratings'}">
               </ng-pluralize></span>
           </div>
-          <div ng-if="feedbacks.length <= 0">
-            <div class="item item-body no-feedbacks">
-              <div>
-                <span class="icon ion-fork"></span>
-                <span class="icon ion-knife"></span>
-              </div>
-              <p>There are no feedbacks for this day.</p>
+          <div ng-if="feedbacks.length <= 0" class="item item-body no-feedbacks">
+            <div>
+              <span class="icon ion-fork"></span>
+              <span class="icon ion-knife"></span>
             </div>
+            <p>There are no feedbacks for this day.</p>
           </div>
           <div ng-if="feedbacks.length > 0">
             <div class="row day-view--summary">
@@ -32,11 +30,11 @@
               </div>
               <div class="col col-50 day-view--stats">
                 <div class="row">
-                  <div class="col col-25"><span class="icon ion-ribbon-b"></span></div>
+                  <div class="col col-25"><span title="Best option" class="icon ion-ribbon-b"></span></div>
                   <h5 class="col col-75">{{stats.best.title}} <em>({{stats.best.rating | number : 1}}/10)</em></h5>
                 </div>
                 <div class="row">
-                  <div class="col col-25"><span class="icon ion-flame"></span></div>
+                  <div class="col col-25"><span title="Most popular option" class="icon ion-flame"></span></div>
                   <h5 class="col col-75">{{stats.popular}}</h5>
                 </div>
 
