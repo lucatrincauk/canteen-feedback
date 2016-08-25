@@ -7,12 +7,14 @@
 
 .day-view {
   .item-divider {
+    font-weight: 400;
     padding: 10px;
   }
 }
 
 .no-feedbacks {
     text-align: center;
+    background: #f5f5f5;
 
     .icon {
         font-size: 4rem;

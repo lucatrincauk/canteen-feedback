@@ -1,3 +1,10 @@
+body {
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, .badge, button, strong {
+  font-weight: 400;
+}
 .item-divider {
   text-align: center;
 }
@@ -44,4 +51,10 @@
     padding: 5px
   }
 
+  .item-divider .col {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
 }
